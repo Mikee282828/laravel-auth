@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -11,7 +12,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        return view('projects.index');
     }
 
     /**
@@ -19,7 +20,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.create');
     }
 
     /**
@@ -27,7 +28,8 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newProject = new Project();
+        return redirect()->route('projects.index');
     }
 
     /**

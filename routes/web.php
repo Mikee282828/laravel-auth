@@ -30,6 +30,6 @@ Route::middleware(['auth'])
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     });
 
-Route::resource('/', ProjectController::class);
+Route::resource('/projects', ProjectController::class);
 
 require __DIR__ . '/auth.php';

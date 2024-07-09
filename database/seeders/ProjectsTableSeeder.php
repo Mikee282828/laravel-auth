@@ -12,6 +12,5 @@ class ProjectsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        //
     }
 }
