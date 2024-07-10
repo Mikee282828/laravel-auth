@@ -31,10 +31,10 @@ class ProjectController extends Controller
     {
         $data = $request->validate([
             'title'=>'required',
-            'description'=>'required',
+            'description'=>'required|min:10|max:255',
             'img_preview'=>'required'
         ]);
-        
+
         $newProject = new Project();
 
         $newProject->fill($data);
@@ -68,7 +68,7 @@ class ProjectController extends Controller
     {
         $data = $request->validate([
             'title'=>'required',
-            'description'=>'required',
+            'description'=>'required|min:10|max:255',
             'img_preview'=>'required'
         ]);
 
