@@ -7,7 +7,7 @@
 				<img src="{{ $projects->img_preview }}" class="w-100 rounded-start" alt="immagine-progetto">
 			</div>
 			<div class="row g-0 m-0">
-				<div class="col-md-8">
+				<div class="col-12">
 					<div class="card-body">
 						<p class="card-text"><b>Titolo Progetto:</b> {{ $projects->title }}</p>
 						<p class="card-text"><b>Descrizione Progetto:</b> {{ $projects->description }}</p>

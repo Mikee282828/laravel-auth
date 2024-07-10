@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController; //<---- Import del controller precedentemente creato!
 use App\Http\Controllers\Admin\ProjectController;
+use App\Models\Project;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,10 @@ use App\Http\Controllers\Admin\ProjectController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $data = [
+        'projects' => Project::all()
+    ];
+    return view('welcome', $data);
 });
 
 Route::middleware(['auth'])
@@ -30,5 +34,5 @@ Route::middleware(['auth'])
         Route::resource('/projects', ProjectController::class);
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     });
-    
+
 require __DIR__ . '/auth.php';
