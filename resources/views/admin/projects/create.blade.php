@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-	<h1 class="bg-warning p-2 m-0">Questo è l'edit</h1>
 	<div class="container">
+		<h1>Questo è il Create</h1>
 
 		{{-- MESSAGGIO DI ERRORE SE NON SI COMPLETANO I CAMPI CHE SONO OBBLIGATORI --}}
 		<div>
@@ -17,8 +17,8 @@
 			@endif
 		</div>
 
-		<form method="POST" action="{{ route('projects.update') }}">
-			@method('PUT')
+
+		<form method="POST" action="{{ route('admin.projects.store') }}">
 			@csrf
 			<div class="mb-3">
 				<label for="exampleInputEmail1" class="form-label">Email address</label>
