@@ -34,7 +34,7 @@ class ProjectController extends Controller
             'description'=>'required',
             'img_preview'=>'required'
         ]);
-
+        
         $newProject = new Project();
 
         $newProject->fill($data);
