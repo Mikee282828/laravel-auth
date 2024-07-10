@@ -28,5 +28,12 @@ class UserSeeder extends Seeder
             $mainUser->password = Hash::make('1backdoor2big');
             $mainUser->save();
         }
+        if (!User::where("email", "michele@dong.it")->first()) {
+            $mainUser = new User();
+            $mainUser->name = "Michele";
+            $mainUser->email = "michele@dong.it";
+            $mainUser->password = Hash::make('prova');
+            $mainUser->save();
+        }
     }
 }
