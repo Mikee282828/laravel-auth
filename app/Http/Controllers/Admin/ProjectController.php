@@ -54,7 +54,7 @@ class ProjectController extends Controller
         $data = [
             "projects" => $project
         ];
-        return view("comics.show", $data);
+        return view("admin.projects.show", $data);
     }
 
     /**
