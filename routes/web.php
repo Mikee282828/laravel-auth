@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController; //<---- Import del controller precedentemente creato!
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\Admin\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +27,8 @@ Route::middleware(['auth'])
         //Siamo nel gruppo quindi:
         // - il percorso "/" diventa "admin/"
         // - il nome della rotta ->name("dashboard") diventa ->name("admin.dashboard")
+        Route::resource('/projects', ProjectController::class);
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     });
-
-Route::resource('/projects', ProjectController::class);
-
+    
 require __DIR__ . '/auth.php';
