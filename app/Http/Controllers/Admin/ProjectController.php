@@ -29,7 +29,11 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([]);
+        $data = $request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'img_preview'=>'required'
+        ]);
 
         $newProject = new Project();
 
@@ -62,7 +66,11 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $data = $request->validate([]);
+        $data = $request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'img_preview'=>'required'
+        ]);
 
         $project->update($data);
 
