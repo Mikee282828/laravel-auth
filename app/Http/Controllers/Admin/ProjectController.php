@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 
 use App\Models\Project;
@@ -13,7 +14,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('admin.projects.index');
+        $data = [
+            'projects' => Project::all()
+        ];
+        return view('admin.projects.index', $data);
     }
 
     /**
@@ -45,9 +49,12 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-        //
+        $data = [
+            "projects" => $project
+        ];
+        return view("admin.projects.show", $data);
     }
 
     /**
