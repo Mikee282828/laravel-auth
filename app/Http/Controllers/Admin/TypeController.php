@@ -14,7 +14,10 @@ class TypeController extends Controller
      */
     public function index()
     {
-        return 'Questa è la index di type';
+        $data = [
+            'types' => Type::all()
+        ];
+        return view('admin.types.index', $data);
     }
 
     /**

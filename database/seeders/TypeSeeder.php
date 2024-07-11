@@ -16,25 +16,25 @@ class TypeSeeder extends Seeder
         $newType = new Type();
         $newType->name = 'Front-end';
         $newType->description = 'Wrote mainly in html css jss';
-        $newType->icon = '<i class="fa-solid fa-window-maximize"></i>';
+        $newType->icon = "fa-solid fa-window-maximize";
         $newType->save();
 
         $newType = new Type();
         $newType->name = 'Back-end';
         $newType->description = 'Wrote mainly in php and blade';
-        $newType->icon = '<i class="fa-solid fa-server"></i>';
+        $newType->icon = "fa-solid fa-server";
         $newType->save();
 
         $newType = new Type();
         $newType->name = 'Full stack';
         $newType->description = 'Wrote with front and back end languages';
-        $newType->icon = '<i class="fa-solid fa-code"></i>';
+        $newType->icon = "fa-solid fa-code";
         $newType->save();
 
         $newType = new Type();
         $newType->name = 'Design';
         $newType->description = "it's stylish!";
-        $newType->icon = '<i class="fa-solid fa-marker"></i>';
+        $newType->icon = "fa-solid fa-marker";
         $newType->save();
     }
 }
