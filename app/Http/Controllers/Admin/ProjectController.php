@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -25,7 +26,10 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $data = [
+            'types' => Type::all()
+        ];
+        return view('admin.projects.create',$data);
     }
 
     /**
@@ -36,7 +40,7 @@ class ProjectController extends Controller
         $data = $request->validate([
             'title'=>'required',
             'description'=>'required|min:10|max:255',
-            'img_preview'=>'required'
+            'img_preview'=>'required',
         ]);
 
         $newProject = new Project();

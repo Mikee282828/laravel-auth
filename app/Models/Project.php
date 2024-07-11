@@ -12,7 +12,8 @@ class Project extends Model
     protected $fillable = [
         'title',
         'description',
-        'img_preview'
+        'img_preview',
+        'type_id'
     ];
 
     public function type() // questa funzione permette di fare $projects->$type_id->name
