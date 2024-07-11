@@ -15,7 +15,7 @@ class Project extends Model
         'img_preview'
     ];
 
-    public function type()
+    public function type() // questa funzione permette di fare $projects->$type_id->name
     {
         return $this->belongsTo(Type::class);
     }
