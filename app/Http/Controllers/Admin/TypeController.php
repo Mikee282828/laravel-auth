@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Validated;
 
 class TypeController extends Controller
 {
@@ -29,7 +30,18 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name'=>'required',
+            'description'=>'required',
+            'icon'=>'required'
+        ]);
+
+        $newModel = new Type();
+
+        $newModel->fill($data);
+        $newModel->save();
+
+        return redirect()->route('admin.types.index');
     }
 
     /**
