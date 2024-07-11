@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="text-center py-2">Crea Nuovo Progetto</h1>
+        <h1 class="text-center py-2">Crea Nuovo Tipo</h1>
 
         {{-- MESSAGGIO DI ERRORE SE NON SI COMPLETANO I CAMPI CHE SONO OBBLIGATORI --}}
         <div>

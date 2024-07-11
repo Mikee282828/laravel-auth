@@ -56,6 +56,16 @@
                                     <i class="fa-solid fa-plus  fa-lg fa-fw"></i> Aggiungi progetto
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('admin.types.index') }}">
+                                    <i class="fa-solid fa-list-ul  fa-lg fa-fw"></i> Lista tipi
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('admin.types.create') }}">
+                                    <i class="fa-solid fa-plus  fa-lg fa-fw"></i> Aggiungi tipi
+                                </a>
+                            </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="{{ route('logout') }}"
