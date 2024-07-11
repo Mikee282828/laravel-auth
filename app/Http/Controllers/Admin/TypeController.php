@@ -52,7 +52,10 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        $data = [
+            'type' => $type
+        ];
+        return view('admin.types.show', $data);
     }
 
     /**
@@ -79,7 +82,7 @@ class TypeController extends Controller
 
         $type->update($data);
 
-        return redirect()->route('admin.types.show');
+        return redirect()->route('admin.types.show',$type);
     }
 
     /**
