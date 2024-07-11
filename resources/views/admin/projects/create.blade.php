@@ -39,7 +39,7 @@
 
 			<div class="mb-3">
 				<label for="img_preview" class="form-label">URL Immagine Nuovo Progetto</label>
-				<input type="text" class="form-control" name="img_preview" value="{{ old('title') }}">
+				<input type="text" class="form-control" name="img_preview" value="{{ old('img_preview') }}">
 				@error('img_preview')
 					<div class="form-text text-danger">The Link Preview field is required.</div>
 				@enderror
