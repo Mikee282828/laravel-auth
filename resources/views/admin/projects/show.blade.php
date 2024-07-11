@@ -11,6 +11,7 @@
 					<div class="card-body">
 						<p class="card-text"><b>Titolo Progetto:</b> {{ $projects->title }}</p>
 						<p class="card-text"><b>Descrizione Progetto:</b> {{ $projects->description }}</p>
+						<p class="card-text"><b>Tipo Progetto:</b> {{ $projects->type_id }}</p>
 					</div>
 				</div>
 			</div>
