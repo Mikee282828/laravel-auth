@@ -21,7 +21,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        return 'Questa è la create di type';
+        return view('admin.types.create');
     }
 
     /**
