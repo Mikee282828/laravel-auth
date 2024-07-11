@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Type;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TypeController extends Controller
 {
@@ -12,7 +13,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        return 'Questa è la index di type';
     }
 
     /**
@@ -20,7 +21,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return 'Questa è la create di type';
     }
 
     /**
@@ -44,7 +45,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+
     }
 
     /**
