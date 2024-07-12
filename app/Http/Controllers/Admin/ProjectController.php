@@ -41,6 +41,7 @@ class ProjectController extends Controller
             'title'=>'required',
             'description'=>'required|min:10|max:255',
             'img_preview'=>'required',
+            'type_id'=>'required'
         ]);
 
         $newProject = new Project();
