@@ -12,4 +12,8 @@ class Language extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function projects(){
+        return $this->belongsToMany('App\Models\Project');
+    }
 }
