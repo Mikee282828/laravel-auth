@@ -63,7 +63,8 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         $data = [
-            "projects" => $project
+            "projects" => $project,
+            "setLanguages" => LanguageProject::where('project_id',$project->id)->get()
         ];
         return view("admin.projects.show", $data);
     }
@@ -77,7 +78,7 @@ class ProjectController extends Controller
             'project' => $project,
             'types' => Type::all(),
             'languages'=> Language::all(),
-            'setLanguages' => LanguageProject::where('project_id',$project->id)->get()
+            // 'setLanguages' => LanguageProject::where('project_id',$project->id)->get()
         ];
         // dd($data['setLanguages']);
         return view('admin.projects.edit', $data);

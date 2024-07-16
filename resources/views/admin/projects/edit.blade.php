@@ -67,12 +67,18 @@
                 @foreach ($languages as $language)
                     <label for="language_id[]" class="form-label">{{ $language->name }}</label>
                     <input type="checkbox" name="language_id[]" value="{{ $language->id }}"
-					@foreach ($setLanguages as $settedLanguage)
-						@if ($language->id == $settedLanguage->language_id)
-							checked
-						@endif
-					@endforeach
-					>
+
+                        {{-- @foreach ($setLanguages as $settedLanguage)
+							@if ($language->id == $settedLanguage->language_id)
+								checked
+							@endif 
+						@endforeach --}}
+
+                        @foreach ($project->languages as $setlanguage)
+							@if ($language->id == $setlanguage->id)
+								checked
+							@endif 
+						@endforeach>
                 @endforeach
             </div>
 
