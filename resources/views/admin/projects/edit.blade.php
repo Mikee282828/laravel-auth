@@ -45,6 +45,26 @@
 					<div class="form-text text-danger">The Link Preview field is required.</div>
 				@enderror
 			</div>
+
+			<div class="mb-3">
+
+				<label for="type_id" class="form-label">Tipo Nuovo Progetto</label>
+
+				<select name="type_id">
+					@foreach ($types as $type)
+						<option value="{{$type->id}}"
+						@if ($type->id==$project->type_id)
+							selected
+						@endif
+						>{{$type->name}}</option>
+					@endforeach
+				</select>
+
+				@error('type_id')
+					<div class="form-text text-danger">{{$message}}</div>
+				@enderror
+			</div>
+
 			<button type="submit" class="btn btn-outline-danger">Modifica Progetto</button>
 
 		</form>
