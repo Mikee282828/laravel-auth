@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\Language;
 use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Http\Request;
@@ -27,7 +27,8 @@ class ProjectController extends Controller
     public function create()
     {
         $data = [
-            'types' => Type::all()
+            'types' => Type::all(),
+            'languages' => Language::all()
         ];
         return view('admin.projects.create',$data);
     }
@@ -41,13 +42,17 @@ class ProjectController extends Controller
             'title'=>'required',
             'description'=>'required|min:10|max:255',
             'img_preview'=>'required',
-            'type_id'=>'required'
+            'type_id'=>'required',
         ]);
-
+        $language_id = $request->validate([
+            'language_id'=>'nullable',
+            'language_id.*'=>'numeric|integer|min:0|max:6'
+        ]);
         $newProject = new Project();
-
         $newProject->fill($data);
         $newProject->save();
+        $newProject->languages()->sync($language_id['language_id']);
+
         return redirect()->route('admin.projects.index');
     }
 
