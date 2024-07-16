@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Language;
+use App\Models\LanguageProject;
 use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Http\Request;
@@ -74,8 +75,11 @@ class ProjectController extends Controller
     {
         $data = [
             'project' => $project,
-            'types' => Type::all()
+            'types' => Type::all(),
+            'languages'=> Language::all(),
+            'setLanguages' => LanguageProject::where('project_id',$project->id)->get()
         ];
+        // dd($data['setLanguages']);
         return view('admin.projects.edit', $data);
     }
 
