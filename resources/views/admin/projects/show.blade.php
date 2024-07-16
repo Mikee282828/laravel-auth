@@ -12,6 +12,11 @@
 						<p class="card-text"><b>Titolo Progetto:</b> {{ $projects->title }}</p>
 						<p class="card-text"><b>Descrizione Progetto:</b> {{ $projects->description }}</p>
 						<p class="card-text"><b>Tipo Progetto:</b> {{ $projects->type->name }}</p>
+						<p class="card-text"><b>Linguaggi utilizzati:</b>
+							@foreach ($projects->languages as $language)
+								{{ $language->name }}
+							@endforeach
+						</p>
 					</div>
 				</div>
 			</div>
