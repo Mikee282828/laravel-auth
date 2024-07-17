@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('language_project', function (Blueprint $table) {
             $table->unsignedBigInteger('project_id');
-            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('project_id')->references('id')->on('projects')->cascadeOnDelete();
             $table->unsignedBigInteger('language_id');
-            $table->foreign('language_id')->references('id')->on('languages');
+            $table->foreign('language_id')->references('id')->on('languages')->cascadeOnDelete();
         });
     }
 
