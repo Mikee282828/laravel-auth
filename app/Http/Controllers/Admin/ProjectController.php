@@ -98,10 +98,24 @@ class ProjectController extends Controller
         $data = $request->validate([
             'title'=>'required',
             'description'=>'required|min:10|max:255',
-            'img_preview'=>'required'
+            'img_preview'=>'nullable|image',
+            'type_id'=>'required',
+            'language_id'=>'nullable',
+            'language_id.*'=>'numeric|integer|min:0|max:6'
         ]);
 
+        if($request->has('img_preview')){
+            
+            $img_path = Storage::put('upload', $request->img_preview);  //restituisce il percorso altrimenti prenderesti il nome
+            $data['img_preview'] = $img_path;
+
+            if($project->img_preview && !Str::startsWith($project->img_preview, 'http')){
+                Storage::delete($project->img_preview);
+            }
+        }
+
         $project->update($data);
+        $project->languages()->sync($data['language_id']);
 
         return redirect()->route('admin.projects.index', $project);
     }

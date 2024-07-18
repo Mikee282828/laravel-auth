@@ -17,7 +17,7 @@
             @endif
         </div>
 
-        <form method="POST" action="{{ route('admin.projects.update', $project->id) }}">
+        <form method="POST" action="{{ route('admin.projects.update', $project->id) }}" enctype="multipart/form-data">
             @method('PUT')
 
             @csrf
@@ -39,11 +39,11 @@
             </div>
 
             <div class="mb-3">
-                <label for="img_preview" class="form-label">Modifica URL IMmagine Progetto</label>
-                <input type="text" class="form-control" name="img_preview"
-                    value="{{ old('title', $project->img_preview) }}">
+                <label for="img_preview" class="form-label">Modifica Immagine Progetto</label>
+                <input type="file" class="form-control" name="img_preview">
+
                 @error('img_preview')
-                    <div class="form-text text-danger">The Link Preview field is required.</div>
+                    <div class="form-text text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
@@ -66,19 +66,17 @@
             <div class="mb-3">
                 @foreach ($languages as $language)
                     <label for="language_id[]" class="form-label">{{ $language->name }}</label>
-                    <input type="checkbox" name="language_id[]" value="{{ $language->id }}"
-
-                        {{-- @foreach ($setLanguages as $settedLanguage)
+                    <input type="checkbox" name="language_id[]" value="{{ $language->id }}" 
+                    {{-- @foreach ($setLanguages as $settedLanguage)
 							@if ($language->id == $settedLanguage->language_id)
 								checked
 							@endif 
 						@endforeach --}}
-
                         @foreach ($project->languages as $setlanguage)
 							@if ($language->id == $setlanguage->id)
 								checked
 							@endif 
-						@endforeach>
+                        @endforeach>
                 @endforeach
             </div>
 
