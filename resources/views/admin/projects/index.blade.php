@@ -12,10 +12,13 @@
                             <div class="row g-0 m-0">
                                 <div class="col-12">
                                     @if (Str::startsWith($projectSingle->img_preview, 'http'))
-                                        <img width="140" src="{{ $projectSingle->img_preview }}" alt="">
+                                        <div class="w-100">
+                                            <img src="{{ $projectSingle->img_preview }}" alt="" class="w-100">
+                                        </div>
                                     @else
-                                        <img width="140" src="{{ asset('storage/' . $projectSingle->img_preview) }}"
-                                            alt="">
+                                        <div class="w-100">
+                                            <img src="{{ asset('storage/' . $projectSingle->img_preview) }}" alt="" class="w-100">
+                                        </div>
                                     @endif
                                 </div>
                                 <h5 class="card-title"><b>Titolo Progetto:</b> {{ $projectSingle->title }}</h5>
