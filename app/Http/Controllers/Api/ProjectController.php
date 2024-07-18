@@ -11,7 +11,6 @@ class ProjectController extends Controller
     public function index()
     {
         return response()->json([
-            'success' => true,
             'projects' => Project::orderByDesc('id')->paginate()
         ]);
     }

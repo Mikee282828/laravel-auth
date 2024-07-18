@@ -17,7 +17,7 @@ class ProjectController extends Controller
     public function index()
     {
         $data = [
-            'projects' => Project::all()
+            'projects' => Project::paginate()
         ];
         return view('admin.projects.index', $data);
     }
