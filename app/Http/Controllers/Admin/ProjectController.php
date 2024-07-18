@@ -8,6 +8,7 @@ use App\Models\LanguageProject;
 use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -17,7 +18,7 @@ class ProjectController extends Controller
     public function index()
     {
         $data = [
-            'projects' => Project::paginate()
+            'projects' => Project::orderByDesc('id')->paginate()
         ];
         return view('admin.projects.index', $data);
     }
@@ -42,17 +43,21 @@ class ProjectController extends Controller
         $data = $request->validate([
             'title'=>'required',
             'description'=>'required|min:10|max:255',
-            'img_preview'=>'required',
+            'img_preview'=>'nullable|image',
             'type_id'=>'required',
-        ]);
-        $language_id = $request->validate([
             'language_id'=>'nullable',
             'language_id.*'=>'numeric|integer|min:0|max:6'
         ]);
+
+        if($request->has('img_preview')){
+            $img_path = Storage::put('upload',$data['img_preview']); //salva il percorso
+            $data['img_preview'] = $img_path;
+        }   
+
         $newProject = new Project();
         $newProject->fill($data);
         $newProject->save();
-        $newProject->languages()->sync($language_id['language_id']);
+        $newProject->languages()->sync($data['language_id']);
 
         return redirect()->route('admin.projects.index');
     }
