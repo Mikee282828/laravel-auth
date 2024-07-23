@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController; //<---- Import del controlle
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Models\Project;
+use App\Models\Lead;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,9 @@ Route::middleware(['auth'])
         Route::resource('/types', TypeController::class);
     });
 
+Route::get('/mailable', function () {
+    // $lead = ['name' => 'Michele', 'email'=>'michele@example.com', 'message' => 'lorem ipsum dolor'];
+    $lead = Lead::first();
+    return new App\Mail\NewLeadMessage($lead);
+});
 require __DIR__ . '/auth.php';
