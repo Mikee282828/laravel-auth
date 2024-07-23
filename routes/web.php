@@ -41,6 +41,6 @@ Route::middleware(['auth'])
 Route::get('/mailable', function () {
     // $lead = ['name' => 'Michele', 'email'=>'michele@example.com', 'message' => 'lorem ipsum dolor'];
     $lead = Lead::first();
-    return new App\Mail\NewLeadMessage($lead);
+    return new App\Mail\NewLeadMarkdownMessage($lead);
 });
 require __DIR__ . '/auth.php';

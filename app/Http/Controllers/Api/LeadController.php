@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
-use App\Mail\NewLeadMessage;
+use App\Mail\NewLeadMarkdownMessage;
 use App\Models\Lead;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -29,6 +29,7 @@ class LeadController extends Controller
             return response()->json([
                 'success' => false,
                 'errors' => $validator->errors()
+                // ->errors() returns an array that has as keys, the name of the property and the value the relative error
             ]);
         }
 
@@ -38,7 +39,7 @@ class LeadController extends Controller
         $newLead->fill($data);
         $newLead->save();
 
-        Mail::to('info@boolean')->send(new NewLeadMessage($newLead));
+        Mail::to('info@boolean.com')->send(new NewLeadMarkdownMessage($newLead));
 
         return response()->json([
             'success' => true,
